@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="Mercurial — direct contact by phone or email." />
+  <meta name="theme-color" content="#061321" />
+  <title>Mercurial</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;500;600&display=swap");
+
+    :root { color-scheme: dark; background: #02060d; font-family: "DM Sans", Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { min-width: 320px; min-height: 100%; margin: 0; }
+    body { overflow-x: hidden; background: #02060d; }
+
+    .space-stage {
+      position: relative;
+      isolation: isolate;
+      min-height: 100svh;
+      overflow: hidden;
+      background: #02060d url("assets/mercurialwebspace.png") center center / cover no-repeat;
+    }
+    .space-stage__veil {
+      position: absolute; z-index: -1; inset: 0;
+      background: linear-gradient(180deg, rgb(0 6 17 / 10%) 0%, rgb(0 7 18 / 0%) 39%, rgb(0 5 14 / 27%) 100%), radial-gradient(ellipse 60% 42% at 50% 46%, transparent 25%, rgb(1 6 16 / 20%) 100%);
+    }
+    .space-stage__grain {
+      position: absolute; z-index: -1; inset: 0; opacity: .15; pointer-events: none; mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+    }
+    .landing-shell {
+      display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 100svh; width: min(100%, 1600px); margin: 0 auto;
+      padding: clamp(2rem, 5.5vh, 4.5rem) clamp(1.5rem, 5vw, 6rem) clamp(1.65rem, 4.6vh, 3.65rem);
+    }
+    .brand-zone { display: grid; align-content: center; justify-items: center; padding-bottom: clamp(1.5rem, 4vh, 3rem); }
+    .mercurial-wordmark {
+      display: block; width: min(67vw, 920px); height: auto; user-select: none;
+      filter: drop-shadow(0 3px 1px rgb(0 0 0 / 46%)) drop-shadow(0 13px 26px rgb(0 0 0 / 34%));
+    }
+    .contact-dock { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 10vw, 10rem); width: min(100%, 720px); justify-self: center; }
+    .contact-action {
+      display: grid; grid-template-columns: auto auto; grid-template-areas: "emblem label"; column-gap: .8rem; align-items: center; justify-content: center; min-width: 0;
+      color: #f2f8ff; text-decoration: none; outline-offset: 8px;
+      transition: transform 180ms cubic-bezier(.23, 1, .32, 1), filter 180ms cubic-bezier(.23, 1, .32, 1);
+    }
+    .contact-action:focus-visible { outline: 2px solid #fff; border-radius: .35rem; }
+    .contact-action:hover { transform: translateY(-3px); }
+    .contact-action:active { transform: scale(.97); }
+    .contact-action--phone:hover { filter: drop-shadow(0 0 14px rgb(231 154 48 / 48%)); }
+    .contact-action--email:hover { filter: drop-shadow(0 0 14px rgb(71 162 255 / 55%)); }
+    .contact-emblem { display: grid; grid-area: emblem; place-items: center; width: 3.55rem; height: 3.55rem; }
+    .contact-emblem img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .contact-label { grid-area: label; align-self: center; color: #f4f8ff; font-family: "Space Grotesk", Arial, sans-serif; font-size: clamp(.78rem, 1.18vw, 1rem); font-weight: 500; letter-spacing: .15em; line-height: 1.05; text-transform: uppercase; }
+
+    @media (max-width: 640px) {
+      .space-stage { background-position: 23% center; background-size: auto 100%; }
+      .space-stage__veil { background: linear-gradient(180deg, rgb(0 6 17 / 17%) 0%, rgb(0 7 18 / 0%) 41%, rgb(0 5 14 / 37%) 100%), radial-gradient(ellipse 120% 52% at 50% 45%, transparent 20%, rgb(1 6 16 / 31%) 100%); }
+      .landing-shell { padding: 1.8rem 1.35rem 1.75rem; }
+      .brand-zone { align-content: center; padding-bottom: 2.5rem; }
+      .mercurial-wordmark { width: min(93vw, 480px); }
+      .contact-dock { gap: .8rem; width: 100%; }
+      .contact-action { grid-template-columns: 1fr; grid-template-areas: "emblem" "label"; justify-items: center; gap: .35rem; padding: .7rem .3rem; }
+      .contact-emblem { width: 3.4rem; height: 3.4rem; }
+      .contact-label { align-self: auto; font-size: .78rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="space-stage">
+    <div class="space-stage__veil" aria-hidden="true"></div>
+    <div class="space-stage__grain" aria-hidden="true"></div>
+    <div class="landing-shell">
+      <header class="brand-zone">
+        <img class="mercurial-wordmark" src="assets/mercurial-logo.png" alt="Mercurial" />
+      </header>
+      <nav class="contact-dock" aria-label="Contact Mercurial">
+        <a class="contact-action contact-action--phone" href="tel:+13218483685" aria-label="Call Mercurial at 321-848-3685">
+          <span class="contact-emblem" aria-hidden="true"><img src="assets/phone-emblem.png" alt="" /></span>
+          <span class="contact-label">Phone</span>
+        </a>
+        <a class="contact-action contact-action--email" href="mailto:kmb@karyn.io" aria-label="Email Mercurial at kmb@karyn.io">
+          <span class="contact-emblem" aria-hidden="true"><img src="assets/email-emblem.png" alt="" /></span>
+          <span class="contact-label">Email</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+</body>
+</html>
